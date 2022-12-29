@@ -1,0 +1,51 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.spacer {
+  height: 500PX;
+
+}
+
+/* Colors and font sizes can be changed, everything else is required for a responsive footer. Links can be added and removed. The spacer above is not needed, it is just simulating space where content would normally go. */
+
+.footer {
+    width: 100%;
+    background-color:085158;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+    width: 80%;
+}
+
+.footer-item {
+    color: white;
+    text-decoration: none;
+    margin: 5px 0px;
+    padding: 5px 10px 5px 10px;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    margin: 20px 0px;
+    border-left: solid white 1px;
+    padding: 0px 50px;
+}
+
+.footer-item:hover {
+    background: rgb(18, 29, 56);
+}
+

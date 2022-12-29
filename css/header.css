@@ -1,0 +1,58 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  .logo {
+    height: 100%;
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    background: #085158;
+    height: 5.5rem;
+    padding: 0 1em 0 1em;
+    font-size: 1.1em;
+    flex: 0.5;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+  }
+  
+  .nav ul {
+    display: flex;
+    list-style: none;
+    height: 100%;
+    justify-content: end;
+    align-items: center;
+    flex: 1;
+  }
+  
+
+  
+  .nav a {
+    text-decoration: none;
+    color: white;
+    height: 100%;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px 0 25px;
+    transition: 0.1s;
+  }
+  
+  .nav a:hover {
+    background-color: #05373c;
+    transition: 0.1s;
+  }
+  
+  
+  /* Denotes the active menu item */
+  .active {
+    background-color: #05373c;
+    transition: 0.1s;
+  }
+  
+  body{
+    background-color: aliceblue !important;
+}
+
+ 
