@@ -1,7 +1,7 @@
 <?php 
+error_reporting(E_ERROR);
 include('config.php');
 include("headerafter.php");
-
 if (!isset($_SESSION['id'])) {
     header("location:login.php");
 }
@@ -104,16 +104,41 @@ if (isset($_POST['save'])) {
     }else{
         $where_hobby                =   "";
     }
-    $sql = "select * from admin where 1=1 ". $where_user." ".$where_name." ".$where_phone." ".$where_gender." ".$where_city." ".$where_state." ".$where_hobby;
+
+    $limit = 10;
+    if (!isset ($_GET['page']) ) {  
+        $page_number = 1;  
+    } else {  
+        $page_number = $_GET['page'];  
+    }    
+    $initial_page = ($page_number-1) * $limit; 
+
+     
+    echo $sql = "select * from admin  where  1=1 ". $where_user." ".$where_name." ".$where_phone." ".$where_gender." ".$where_city." ".$where_state." ".$where_hobby." limit " .$initial_page . "," . $limit;
     $res = mysqli_query($con, $sql);
-    
+    $total_rows = mysqli_num_rows($res);
+    $total_pages = ceil ($total_rows / $limit);     
+   
     
 
 }else{
+    $limit = 10;  
     $sql = "select * from admin ". $order_by;
-    $res = mysqli_query($con, $sql);
+    
+    $res1 = mysqli_query($con, $sql);
+    $total_rows = mysqli_num_rows($res1);
+    $total_pages = ceil ($total_rows / $limit);     
+    if (!isset ($_GET['page']) ) {  
+        $page_number = 1;  
+    } else {  
+        $page_number = $_GET['page'];  
+    }    
+    $initial_page = ($page_number-1) * $limit;   
+   echo $sql2 = "select * from admin ". $order_by . " limit " . $initial_page . "," . $limit;  
+    $res = mysqli_query($con, $sql2);       
     
 }
+
 ?>
 
 <link rel="stylesheet" href="css/user_data.css">
@@ -199,7 +224,9 @@ if (isset($_POST['save'])) {
     </tr>
 
     <?php
+    $count = 0;
         while ($row = mysqli_fetch_array($res)) {
+            $count++;
     ?>
 
 
@@ -248,6 +275,16 @@ if (isset($_POST['save'])) {
 
 
 
+<div style="
+    text-align: center;
+    font-size: 27px;
+    margin-top: 15px;
+">
+    <?php  for($page_number = 1; $page_number<= $total_pages; $page_number++) {  
 
+    echo '<a href = "user_data.php?page=' . $page_number . '" style = "text-decoration:none;background-color:#e36c6c;" >' . $page_number . ' </a>';  
+
+}    ?>
+</div>
 <a href="http://localhost/Project/user_add.php" class="button">Add user</a>
 <?php include("footer.php");?>
