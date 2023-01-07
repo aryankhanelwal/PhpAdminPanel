@@ -114,7 +114,7 @@ if (isset($_POST['save'])) {
     $initial_page = ($page_number-1) * $limit; 
 
      
-    echo $sql = "select * from admin  where  1=1 ". $where_user." ".$where_name." ".$where_phone." ".$where_gender." ".$where_city." ".$where_state." ".$where_hobby." limit " .$initial_page . "," . $limit;
+    $sql = "select * from admin  where  1=1 ". $where_user." ".$where_name." ".$where_phone." ".$where_gender." ".$where_city." ".$where_state." ".$where_hobby." limit " .$initial_page . "," . $limit;
     $res = mysqli_query($con, $sql);
     $total_rows = mysqli_num_rows($res);
     $total_pages = ceil ($total_rows / $limit);     
@@ -134,7 +134,7 @@ if (isset($_POST['save'])) {
         $page_number = $_GET['page'];  
     }    
     $initial_page = ($page_number-1) * $limit;   
-   echo $sql2 = "select * from admin ". $order_by . " limit " . $initial_page . "," . $limit;  
+    $sql2 = "select * from admin ". $order_by . " limit " . $initial_page . "," . $limit;  
     $res = mysqli_query($con, $sql2);       
     
 }
